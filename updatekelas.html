@@ -94,7 +94,7 @@
                 const namaKelas = document.getElementById("namaKelas").value;
                 const semester = document.getElementById("semester").value;
                 const kelasId = getKelasIdFromQueryParam(); // Fungsi untuk mendapatkan ID kelas dari query parameter
-                const token = localStorage.getItem("token"); // Ambil token dari local storage, pastikan token sudah tersedia
+                const token = localStorage.getItem("authToken"); // Ambil token dari local storage, pastikan token sudah tersedia
 
                 const data = {
                     nama_kelas: namaKelas,
@@ -121,6 +121,7 @@
                     console.log("Kelas berhasil diupdate:", data);
                     alert("Kelas berhasil diupdate!");
                     // Redirect or update UI as needed
+                    window.location.href = "kelas.html"; // Redirect ke halaman daftar kelas setelah berhasil diupdate
                 })
                 .catch(error => {
                     console.error("Ada masalah dengan permintaan update kelas:", error);
