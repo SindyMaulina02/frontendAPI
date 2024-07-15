@@ -8,7 +8,7 @@
 </head>
 <body>
     <div id="form-ui">
-        <form id="form">
+        <form action="#" method="post" id="form">
             <div id="form-body">
                 <div id="welcome-lines">
                     <div id="welcome-line-1">Login</div>
@@ -47,19 +47,13 @@
                 },
                 body: JSON.stringify({ username: username, password: password })
             })
-            .then(response => {
-                if (!response.ok) {
-                    return response.json().then(error => { throw new Error(error.message); });
-                }
-                return response.json();
-            })
+            .then(response => response.json())
             .then(data => {
+                console.log(data);
                 if (data.token) {
                     // Save the token in localStorage
                     localStorage.setItem('token', data.token);
                     alert('Login successful');
-
-                    // Redirect to another page or perform some action
                     window.location.href = "./kelas.html";
                 } else {
                     alert('Login failed: ' + data.message);
